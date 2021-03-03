@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindProducts", "NorthW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksOrders", "AdventureWorksOrders\AdventureWorksOrders.csproj", "{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubRepoLink", "GitHubRepoLink\GitHubRepoLink.csproj", "{D3DB70FF-2EE5-4D7C-9CAE-9493CDBED90C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3DB70FF-2EE5-4D7C-9CAE-9493CDBED90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3DB70FF-2EE5-4D7C-9CAE-9493CDBED90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3DB70FF-2EE5-4D7C-9CAE-9493CDBED90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3DB70FF-2EE5-4D7C-9CAE-9493CDBED90C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
