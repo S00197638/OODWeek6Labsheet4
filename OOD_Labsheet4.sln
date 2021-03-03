@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindProducts", "NorthWindProducts\NorthWindProducts.csproj", "{B21F63D3-DC4F-4B7D-A9F3-670A5D1D973F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksOrders", "AdventureWorksOrders\AdventureWorksOrders.csproj", "{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B21F63D3-DC4F-4B7D-A9F3-670A5D1D973F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B21F63D3-DC4F-4B7D-A9F3-670A5D1D973F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B21F63D3-DC4F-4B7D-A9F3-670A5D1D973F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E515836-D7B5-4B0D-B18D-EA542A7A4FB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
