@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AdventureWorksOrders
 {
@@ -20,7 +10,8 @@ namespace AdventureWorksOrders
     /// </summary>
     public partial class MainWindow : Window
     {
-        AdventureLiteEntities db = new AdventureLiteEntities();//Reference to Database
+        //Reference to Database
+        AdventureLiteEntities db = new AdventureLiteEntities();
 
         #region Startup
         public MainWindow()
@@ -37,6 +28,44 @@ namespace AdventureWorksOrders
             var customers = query.ToList();
 
             lbxCustomers.ItemsSource = customers.Distinct();
+        }
+        #endregion
+
+        #region Selection
+        //Customers
+        private void lbxCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string customer = lbxCustomers.SelectedItem as string;
+
+            if(customer != null)
+            {
+                var query = db.SalesOrderHeaders
+                    .Where(o => o.Customer.CompanyName.Equals(customer))
+                    .Select(o => o);
+
+                lbxOrderSummary.ItemsSource = query.ToList();
+            }
+        }
+        //Order Summary
+        private void lbxOrderSummary_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int orderID = Convert.ToInt32(lbxOrderSummary.SelectedValue);
+
+            if(orderID > 0)
+            {
+                var query = db.SalesOrderDetails
+                    .Where(od => od.SalesOrderID == orderID)
+                    .Select(od => new
+                    {
+                        ProductName = od.Product.Name,
+                        od.UnitPrice,
+                        od.UnitPriceDiscount,
+                        od.OrderQty,
+                        od.LineTotal
+                    });
+
+                dgOrderDetails.ItemsSource = query.ToList();
+            }
         }
         #endregion
     }

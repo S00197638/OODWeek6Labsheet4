@@ -18,8 +18,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="lbxCustomers" Grid.Row="1" Grid.Column="0" Margin="10"/>
-        <ListBox x:Name="lbxOrderSummary" Grid.Row="1" Grid.Column="1" Margin="10"/>
+        <ListBox x:Name="lbxCustomers" Grid.Row="1" Grid.Column="0" Margin="10" SelectionChanged="lbxCustomers_SelectionChanged"/>
+        <ListBox x:Name="lbxOrderSummary" Grid.Row="1" Grid.Column="1" SelectedValuePath="SalesOrderID" Margin="10" SelectionChanged="lbxOrderSummary_SelectionChanged"/>
 
         <DataGrid x:Name="dgOrderDetails" Grid.Row="3" Grid.ColumnSpan="2" Margin="10"/>
 
