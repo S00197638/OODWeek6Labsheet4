@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NorthWindProducts
 {
@@ -62,6 +52,70 @@ namespace NorthWindProducts
 
             lbxCountries.ItemsSource = countries.Distinct();
             #endregion
+        }
+        #endregion
+
+        #region Selection
+        //Stock
+        private void lbxStock_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Get stock levels selected
+            var query = db.Products
+                .Where(p => p.UnitsInStock < 50)
+                .OrderBy(p => p.ProductName)
+                .Select(p => p.ProductName);
+
+            string selected = lbxStock.SelectedItem as string;
+
+            switch (selected)
+            {
+                case "Low":
+                    //Do Nothing as query sorted from above
+                    break;
+                case "Normal":
+                    query = db.Products
+                        .Where(p => p.UnitsInStock >= 50 
+                            && p.UnitsInStock <= 100)
+                        .OrderBy(p => p.ProductName)
+                        .Select(p => p.ProductName);
+                    break;
+                case "Overstocked":
+                    query = db.Products
+                        .Where(p => p.UnitsInStock > 100)
+                        .OrderBy(p => p.ProductName)
+                        .Select(p => p.ProductName);
+                    break;
+            }
+
+            //Update Product Listbox
+            lbxProducts.ItemsSource = query.ToList();
+        }
+        //Suppliers
+        private void lbxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Using the selected value path
+            int supplierID = Convert.ToInt32(lbxSuppliers.SelectedValue);
+
+            var query = db.Products
+                .Where(p => p.SupplierID == supplierID)
+                .OrderBy(p => p.ProductName)
+                .Select(p => p.ProductName);
+
+            //Update Product Listbox
+            lbxProducts.ItemsSource = query.ToList();
+        }
+        //Countries
+        private void lbxCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string country = lbxCountries.SelectedValue as string;
+
+            var query = db.Products
+                .Where(p => p.Supplier.Country == country)
+                .OrderBy(p => p.ProductName)
+                .Select(p => p.ProductName);
+
+            //Update Product Listbox
+            lbxProducts.ItemsSource = query.ToList();
         }
         #endregion
     }
