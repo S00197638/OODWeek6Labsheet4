@@ -20,8 +20,9 @@ namespace AdventureWorksOrders
     /// </summary>
     public partial class MainWindow : Window
     {
-        AdventureLiteEntities db = new AdventureLiteEntities();
+        AdventureLiteEntities db = new AdventureLiteEntities();//Reference to Database
 
+        #region Startup
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +30,14 @@ namespace AdventureWorksOrders
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var query = db.SalesOrderHeaders
+                .OrderBy(o => o.Customer.CompanyName)
+                .Select(o => o.Customer.CompanyName);
 
+            var customers = query.ToList();
+
+            lbxCustomers.ItemsSource = customers.Distinct();
         }
+        #endregion
     }
 }
